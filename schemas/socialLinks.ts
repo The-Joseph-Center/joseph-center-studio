@@ -27,6 +27,7 @@ const PLATFORMS = [
   { title: 'Threads', value: 'threads' },
   { title: 'Bluesky', value: 'bluesky' },
   { title: 'Mastodon', value: 'mastodon' },
+  { title: 'Nextdoor', value: 'nextdoor' },
   { title: 'Other', value: 'other' },
 ];
 
@@ -42,6 +43,9 @@ const PLATFORM_ICON_MAP: Record<string, React.ComponentType> = {
   threads: FaThreads,
   bluesky: FaBluesky,
   mastodon: FaMastodon,
+  // No Nextdoor icon in fa6 yet — fall back to FaGlobe in Studio. The
+  // frontend's useSocialIcons composable has the real Nextdoor SVG.
+  nextdoor: FaGlobe,
   other: FaGlobe,
 };
 

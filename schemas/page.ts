@@ -18,10 +18,35 @@ const heroSection = {
   name: 'heroSection',
   title: 'Hero Section',
   fields: [
-    defineField({ name: 'title', title: 'Headline', type: 'string' }),
+    defineField({ name: 'title', title: 'Headline', description: 'Use \\n for line breaks', type: 'text', rows: 2 }),
     defineField({ name: 'subtitle', title: 'Subtitle', type: 'text' }),
     defineField({ name: 'image', title: 'Background Image', description: 'Optional — gradient is used if empty', type: 'image', options: { hotspot: true } }),
     defineField({ name: 'imageAlt', title: 'Background image alt text', description: 'Describe the background image for screen readers', type: 'string' }),
+    defineField({
+      name: 'align',
+      title: 'Text Alignment',
+      type: 'string',
+      options: { list: [
+        { title: 'Center', value: 'center' },
+        { title: 'Left', value: 'left' },
+        { title: 'Right', value: 'right' },
+      ], layout: 'radio' },
+      initialValue: 'center',
+    }),
+    defineField({ name: 'minHeight', title: 'Minimum height', description: 'CSS value (e.g. 70vh, 480px). Defaults to 480px.', type: 'string' }),
+    defineField({ name: 'showStripe', title: 'Show diagonal stripe at bottom', description: 'Defaults to on. The stripe blends the hero into the next section.', type: 'boolean', initialValue: true }),
+    defineField({
+      name: 'stripeColor',
+      title: 'Stripe color',
+      type: 'string',
+      options: { list: [
+        { title: 'Gold', value: 'gold' },
+        { title: 'Green', value: 'green' },
+        { title: 'Deep Green', value: 'deep-green' },
+      ], layout: 'radio' },
+      initialValue: 'gold',
+      hidden: ({ parent }: any) => parent?.showStripe === false,
+    }),
     defineField({
       name: 'cta',
       title: 'CTA Button',
@@ -38,6 +63,119 @@ const heroSection = {
       return { title: title || 'Hero Section', subtitle: 'Hero' };
     },
   },
+};
+
+// ── Joseph Center home-page sections ────────────────────────────────────────
+
+const pillarsBar = {
+  type: 'object',
+  name: 'pillarsBar',
+  title: 'Pillars Bar',
+  fields: [
+    defineField({
+      name: 'pillars',
+      title: 'Mission pillars',
+      description: 'Three short phrases. Defaults to "Supporting People / Providing Resources / Restoring Dignity".',
+      type: 'array',
+      of: [{ type: 'string' }],
+    }),
+  ],
+  preview: { prepare() { return { title: 'Pillars Bar', subtitle: 'Three-column gold band' }; } },
+};
+
+const programsGrid = {
+  type: 'object',
+  name: 'programsGrid',
+  title: 'Programs Grid',
+  fields: [
+    defineField({ name: 'heading', title: 'Section Heading', type: 'string', initialValue: 'Our Programs' }),
+    defineField({
+      name: 'programs',
+      title: 'Programs',
+      description: 'Leave empty to use the four default programs.',
+      type: 'array',
+      of: [{
+        type: 'object',
+        name: 'programItem',
+        fields: [
+          defineField({ name: 'name', title: 'Name', type: 'string' }),
+          defineField({ name: 'description', title: 'Description', type: 'text' }),
+          defineField({ name: 'href', title: 'Link', type: 'string' }),
+        ],
+        preview: {
+          select: { title: 'name' },
+          prepare({ title }: { title?: string }) { return { title: title || 'Untitled Program' }; },
+        },
+      }],
+    }),
+  ],
+  preview: { prepare() { return { title: 'Programs Grid', subtitle: '2×2 cards' }; } },
+};
+
+const ourStorySection = {
+  type: 'object',
+  name: 'ourStorySection',
+  title: 'Our Story',
+  fields: [
+    defineField({ name: 'title', title: 'Section Title', type: 'string', initialValue: 'Our Story' }),
+    defineField({ name: 'body', title: 'Body Text', type: 'text', rows: 4 }),
+    defineField({ name: 'videoId', title: 'YouTube Video ID', description: 'The ID portion of a YouTube URL (e.g. "dQw4w9WgXcQ").', type: 'string' }),
+    defineField({ name: 'videoTitle', title: 'Video Title', description: 'For accessibility — describes the video.', type: 'string' }),
+    defineField({ name: 'ctaLabel', title: 'CTA Label', type: 'string', initialValue: 'Read More' }),
+    defineField({ name: 'ctaUrl', title: 'CTA Link', type: 'string', initialValue: '/our-story' }),
+    defineField({
+      name: 'bandColor',
+      title: 'Diagonal band color',
+      type: 'string',
+      options: { list: [
+        { title: 'Gold', value: 'gold' },
+        { title: 'Green', value: 'green' },
+        { title: 'Deep Green', value: 'deep-green' },
+      ], layout: 'radio' },
+      initialValue: 'gold',
+    }),
+  ],
+  preview: { select: { title: 'title' }, prepare({ title }: { title?: string }) { return { title: title || 'Our Story', subtitle: 'Diagonal band + video' }; } },
+};
+
+const partnersSection = {
+  type: 'object',
+  name: 'partnersSection',
+  title: 'Partners',
+  fields: [
+    defineField({ name: 'title', title: 'Section Title', type: 'string', initialValue: 'Our Partners' }),
+    defineField({
+      name: 'partners',
+      title: 'Partners',
+      description: 'Leave empty to use the default partner list.',
+      type: 'array',
+      of: [{
+        type: 'object',
+        name: 'partnerItem',
+        fields: [
+          defineField({ name: 'name', title: 'Partner Name', type: 'string' }),
+          defineField({ name: 'logo', title: 'Logo', type: 'image' }),
+          defineField({ name: 'href', title: 'Link', type: 'url' }),
+        ],
+        preview: {
+          select: { title: 'name', media: 'logo' },
+          prepare({ title, media }: any) { return { title: title || 'Untitled Partner', media }; },
+        },
+      }],
+    }),
+    defineField({
+      name: 'bandColor',
+      title: 'Diagonal band color',
+      type: 'string',
+      options: { list: [
+        { title: 'Gold', value: 'gold' },
+        { title: 'Green', value: 'green' },
+        { title: 'Deep Green', value: 'deep-green' },
+      ], layout: 'radio' },
+      initialValue: 'gold',
+    }),
+  ],
+  preview: { select: { title: 'title' }, prepare({ title }: { title?: string }) { return { title: title || 'Our Partners', subtitle: 'Diagonal band + logo carousel' }; } },
 };
 
 const featureGrid = {
@@ -332,6 +470,33 @@ const textContent = {
   fields: [
     defineField({ name: 'heading', title: 'Heading', type: 'string' }),
     defineField({ name: 'body', title: 'Body Content', description: 'Rich text', type: 'array', of: [{ type: 'block' }] }),
+    defineField({
+      name: 'alignment',
+      title: 'Text alignment',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Left (default)', value: 'left' },
+          { title: 'Center', value: 'center' },
+          { title: 'Right', value: 'right' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'left',
+    }),
+    defineField({
+      name: 'textTransform',
+      title: 'Text transform',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'None (default)', value: 'none' },
+          { title: 'Uppercase', value: 'uppercase' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'none',
+    }),
   ],
   preview: {
     select: { heading: 'heading' },
@@ -414,6 +579,37 @@ export default defineType({
         textContent,
         portfolioSection,
         teamProjectsSection,
+        // Joseph Center home-page sections
+        pillarsBar,
+        programsGrid,
+        ourStorySection,
+        partnersSection,
+        // Donor appeal — defined in studio/schemas/howYouCanHelp.ts
+        { type: 'howYouCanHelp' },
+        // Program donations + resources (10) — also reused on the event
+        // donations page. Schemas live in studio/schemas/.
+        { type: 'programDonationsSection' },
+        { type: 'programResourcesSection' },
+        // Our Story page (11) sections
+        { type: 'videoSection' },
+        { type: 'dualCtaSection' },
+        { type: 'diagonalTextSection' },
+        // Staff & Board pages (12) section
+        { type: 'peopleGrid' },
+        // Testimonies page (13) section
+        { type: 'videoGridSection' },
+        // Events page (14) section
+        { type: 'eventsListSection' },
+        // Contact, Transparency, About (16) sections
+        { type: 'transparencySection' },
+        // Media & Donate (17) sections
+        { type: 'podcastEpisodesSection' },
+        { type: 'partnershipSection' },
+        { type: 'oneTimeGiftSection' },
+        // Stay Connected (23) — embeddable on any page
+        { type: 'stayConnectedSection' },
+        // Coffee Chat teaser — surface the latest episode on content pages
+        { type: 'latestCoffeeChatSection' },
       ],
     }),
   ],

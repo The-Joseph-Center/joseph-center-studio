@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity';
+import { createElement } from 'react';
 
 export default defineType({
   name: 'coffeeEpisode',
@@ -38,5 +39,52 @@ export default defineType({
   orderings: [
     { title: 'Published, Newest First', name: 'publishedDesc', by: [{ field: 'publishedAt', direction: 'desc' }] },
   ],
-  preview: { select: { title: 'title', subtitle: 'publishedAt', media: 'thumbnailUrl' } },
+  preview: {
+    select: {
+      title: 'title',
+      publishedAt: 'publishedAt',
+      thumbnailUrl: 'thumbnailUrl',
+      featured: 'featured',
+    },
+    prepare({
+      title,
+      publishedAt,
+      thumbnailUrl,
+      featured,
+    }: {
+      title?: string;
+      publishedAt?: string;
+      thumbnailUrl?: string;
+      featured?: boolean;
+    }) {
+      const date = publishedAt
+        ? new Date(publishedAt).toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+          })
+        : null;
+
+      const subtitleParts = [date, featured ? '★ featured' : null].filter(Boolean);
+
+      // The `media` field on a Sanity preview accepts a React node. Building
+      // an <img> element from the YouTube CDN URL renders the thumbnail in
+      // the doc list view. Falls back to undefined (Studio shows nothing)
+      // when the URL hasn't synced yet.
+      const media = thumbnailUrl
+        ? () =>
+            createElement('img', {
+              src: thumbnailUrl,
+              alt: '',
+              style: { width: '100%', height: '100%', objectFit: 'cover' },
+            })
+        : undefined;
+
+      return {
+        title: title || 'Untitled episode',
+        subtitle: subtitleParts.join(' · ') || 'Unpublished',
+        media,
+      };
+    },
+  },
 });
