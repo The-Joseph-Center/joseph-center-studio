@@ -59,7 +59,7 @@ const documents = [
         "links": [
           { "_key": "p-1", "_type": "navLink", "label": "Day Shelter & Food Pantry", "url": "/programs/day-shelter" },
           { "_key": "p-2", "_type": "navLink", "label": "Golden Girls", "url": "/programs/golden-girls" },
-          { "_key": "p-3", "_type": "navLink", "label": "Financial Services", "url": "/programs/financial-services" },
+          { "_key": "p-3", "_type": "navLink", "label": "Integrated Financial Services", "url": "/programs/financial-services" },
           { "_key": "p-4", "_type": "navLink", "label": "Family Center", "url": "/programs/family-center" },
           { "_key": "p-5", "_type": "navLink", "label": "Events", "url": "/events" }
         ]
@@ -88,6 +88,37 @@ const documents = [
     ]
   },
   {
+    "_type": "volunteerSkills",
+    "_id": "volunteerSkills",
+    "categories": [
+      {
+        "_key": "cat-media",
+        "name": "Media & Creative",
+        "skills": ["Photography", "Videography", "Graphic Design", "Social Media"]
+      },
+      {
+        "_key": "cat-legal",
+        "name": "Legal & Financial",
+        "skills": ["Legal / Attorney", "Accounting / Bookkeeping", "Financial Counseling"]
+      },
+      {
+        "_key": "cat-medical",
+        "name": "Medical & Wellness",
+        "skills": ["Medical / Nursing", "Mental Health / Counseling", "Dental"]
+      },
+      {
+        "_key": "cat-trades",
+        "name": "Trades & Facilities",
+        "skills": ["Carpentry / Repairs", "Plumbing", "Electrical", "Landscaping / Groundskeeping", "Painting"]
+      },
+      {
+        "_key": "cat-other",
+        "name": "Other",
+        "skills": ["Transportation / Driving", "Teaching / Tutoring", "IT / Technology", "Grant Writing", "Translation / Interpretation"]
+      }
+    ]
+  },
+  {
     "_type": "page",
     "_id": "page-home",
     "title": "Home",
@@ -100,6 +131,7 @@ const documents = [
         "_type": "heroSection",
         "_key": "heroSection-0",
         "title": "Empowering Lives\nWith Purpose",
+        "subtitle": "The Joseph Center",
         "align": "right",
         "minHeight": "70vh",
         "showStripe": true,
@@ -122,7 +154,7 @@ const documents = [
               {
                 "_type": "span",
                 "_key": "vision-span",
-                "text": "We support people in need of hope by restoring dignity through resources and encouragement to regain a sense of belonging to the greater community.",
+                "text": "The Joseph Center supports people in need of hope by restoring dignity through resources and encouragement to regain a sense of belonging to the greater community.",
                 "marks": []
               }
             ]
@@ -131,7 +163,40 @@ const documents = [
       },
       {
         "_type": "programsGrid",
-        "_key": "programsGrid-3"
+        "_key": "programsGrid-3",
+        "heading": "Our Programs",
+        "programs": [
+          {
+            "_key": "pg-day-shelter",
+            "name": "Day Shelter",
+            "description": "A safe place to rest, shower, do laundry, and figure out what comes next — open to anyone in the Grand Valley.",
+            "href": "/programs/day-shelter"
+          },
+          {
+            "_key": "pg-food-pantry",
+            "name": "Food Pantry",
+            "description": "Hot meals and food boxes for our guests in Grand Junction, every Tuesday through Friday.",
+            "href": "/programs/food-pantry"
+          },
+          {
+            "_key": "pg-family-center",
+            "name": "Family Center",
+            "description": "Parent Advocacy and the Family Empowerment Model — walking alongside parents working toward reunification.",
+            "href": "/programs/family-center"
+          },
+          {
+            "_key": "pg-financial-services",
+            "name": "Integrated Financial Services",
+            "description": "Representative Payee, guardianship, and budget counseling across 16 counties of the Western Slope.",
+            "href": "/programs/financial-services"
+          },
+          {
+            "_key": "pg-golden-girls",
+            "name": "Golden Girls Project",
+            "description": "Temporary housing and case management for women over 50 starting over in the Grand Valley.",
+            "href": "/programs/golden-girls"
+          }
+        ]
       },
       {
         "_type": "ourStorySection",
@@ -181,6 +246,12 @@ const documents = [
         "_key": "contact-form",
         "heading": "We're here to help.",
         "preferenceNotes": "Reach out by phone, email, or the form below — whichever works best for you. Our team responds within one business day."
+      },
+      {
+        "_type": "mapEmbedSection",
+        "_key": "contact-map",
+        "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3097.3660224124865!2d-108.53858382348811!3d39.0753597361832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87471c3ce066e819%3A0xa115f38d383b22ba!2s2511%20Belford%20Ave%2C%20Grand%20Junction%2C%20CO%2081501!5e0!3m2!1sen!2sus!4v1781293306311!5m2!1sen!2sus",
+        "title": "The Joseph Center location map"
       }
     ]
   },
@@ -790,7 +861,7 @@ const documents = [
     "slug": { "_type": "slug", "current": "financial-services" },
     "metaDescription": "Financial management of social security and veterans benefits for disabled people at risk of homelessness.",
     "visionHeading": "Our Vision",
-    "visionBody": "Financial Services provides resources and accounting to disabled people at-risk of homelessness because everyone deserves to have peace of mind.",
+    "visionBody": "Integrated Financial Services provides resources and accounting to disabled people at-risk of homelessness because everyone deserves to have peace of mind.",
     "howWeHelpContent": [
       {
         "_type": "block", "_key": "ifs-1", "style": "normal", "markDefs": [],

@@ -101,6 +101,76 @@ export default defineType({
       initialValue: 'someone in need',
       hidden: ({ parent }: any) => parent?.donorAppealEnabled === false,
     }),
+    // "Their Words" conditional video section — hidden when no videos configured
+    defineField({
+      name: 'programVideos',
+      title: 'Their Words — Video Testimonials',
+      type: 'array',
+      description:
+        'Leave empty to hide the "Their Words" section entirely. Add one video for IFS (single display). Add multiple for Golden Girls and Family Center (grid display).',
+      of: [
+        {
+          type: 'object',
+          title: 'Video',
+          fields: [
+            defineField({ name: 'title', title: 'Name shown on card', type: 'string', validation: (R) => R.required() }),
+            defineField({ name: 'link', title: 'YouTube URL', type: 'url', validation: (R) => R.required() }),
+          ],
+          preview: { select: { title: 'title', subtitle: 'link' } },
+        },
+      ],
+    }),
+    defineField({
+      name: 'programVideosIntro',
+      title: 'Their Words — Intro Text',
+      type: 'string',
+      description: 'Short line displayed above the video(s). Leave blank to use default.',
+    }),
+    // HowYouCanHelp customization
+    defineField({
+      name: 'donorIntro',
+      title: 'How You Can Help — Intro Paragraph',
+      type: 'text',
+      rows: 3,
+      description: 'Opening paragraph for the donor section. Replaces the default.',
+      hidden: ({ parent }: any) => parent?.donorAppealEnabled === false,
+    }),
+    defineField({
+      name: 'donorAsk',
+      title: 'Monthly Donor Ask (dollars)',
+      type: 'number',
+      initialValue: 25,
+      description: '15 for food programs, 25 for all others.',
+      hidden: ({ parent }: any) => parent?.donorAppealEnabled === false,
+    }),
+    defineField({
+      name: 'donorCta1Label',
+      title: 'Donor CTA 1 Label',
+      type: 'string',
+      initialValue: 'Become a Financial Partner',
+      hidden: ({ parent }: any) => parent?.donorAppealEnabled === false,
+    }),
+    defineField({
+      name: 'donorCta1Href',
+      title: 'Donor CTA 1 Link',
+      type: 'string',
+      initialValue: '/donate',
+      hidden: ({ parent }: any) => parent?.donorAppealEnabled === false,
+    }),
+    defineField({
+      name: 'donorCta2Label',
+      title: 'Donor CTA 2 Label',
+      type: 'string',
+      initialValue: 'Sign Up to Volunteer',
+      hidden: ({ parent }: any) => parent?.donorAppealEnabled === false,
+    }),
+    defineField({
+      name: 'donorCta2Href',
+      title: 'Donor CTA 2 Link',
+      type: 'string',
+      initialValue: '/forms/volunteer',
+      hidden: ({ parent }: any) => parent?.donorAppealEnabled === false,
+    }),
     defineField({
       name: 'donationsPageEnabled',
       title: 'Donations page enabled',

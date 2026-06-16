@@ -28,6 +28,9 @@ import banner from './banner';
 import dynamicForm from './dynamicForm';
 import stayConnectedSection from './stayConnectedSection';
 import latestCoffeeChatSection from './latestCoffeeChatSection';
+import mapEmbedSection from './mapEmbedSection';
+import volunteerSkills from './volunteerSkills';
+import activeCampaignsBanner from './activeCampaignsBanner';
 
 export const schemaTypes = [
   page,
@@ -62,4 +65,7 @@ export const schemaTypes = [
   dynamicForm,
   stayConnectedSection,
   latestCoffeeChatSection,
+  mapEmbedSection,
+  volunteerSkills,
+  activeCampaignsBanner,
 ];

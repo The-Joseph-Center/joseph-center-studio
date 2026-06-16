@@ -5,7 +5,7 @@ import { schemaTypes } from './schemas';
 import { deployButtonPlugin } from './plugins/deployButton';
 
 // Types where clients can only edit existing documents, not create or delete
-const LOCKED_TYPES = ['page', 'legalPage', 'siteSettings', 'socialLinks', 'navigation'];
+const LOCKED_TYPES = ['page', 'legalPage', 'siteSettings', 'socialLinks', 'navigation', 'volunteerSkills'];
 
 const projectId = process.env.SANITY_STUDIO_PROJECT_ID!;
 
