@@ -142,7 +142,7 @@ const foodPantry = {
     li('fp-h-6', 'A welcoming space, never a transaction'),
   ],
   inlineCtas: [
-    { _key: 'fp-cta-1', label: 'Call Us', href: 'tel:+19702437672', variant: 'ghost' },
+    { _key: 'fp-cta-1', label: 'Call Us', href: 'tel:+19702457672', variant: 'ghost' },
     { _key: 'fp-cta-2', label: 'Fill Out a Referral Form', href: '/forms/referral', variant: 'primary' },
   ],
   personDescriptor: 'someone',
@@ -227,7 +227,7 @@ const financialServices = {
   ],
   inlineCtas: [
     { _key: 'ifs-cta-1', label: 'Fill Out the Form', href: '/forms/referral', variant: 'primary' },
-    { _key: 'ifs-cta-2', label: 'Call Us', href: 'tel:+19702437672', variant: 'ghost' },
+    { _key: 'ifs-cta-2', label: 'Call Us', href: 'tel:+19702457672', variant: 'ghost' },
   ],
   personDescriptor: 'someone navigating disability and benefits',
   donorIntro:

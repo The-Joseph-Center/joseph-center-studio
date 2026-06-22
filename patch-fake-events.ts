@@ -51,7 +51,7 @@ const fakeEvents = [
       ),
     ],
     location: [
-      block('The Joseph Center, 2511 Belford Ave #9, Grand Junction, CO 81501'),
+      block('The Joseph Center, 2511 Belford Ave Ste B, Grand Junction, CO 81501'),
     ],
     ctaLabel: 'Register Today',
     ctaHref: '/contact',
@@ -73,7 +73,7 @@ const fakeEvents = [
       ),
     ],
     location: [
-      block('Drop-off lobby at The Joseph Center, 2511 Belford Ave #9, Grand Junction, CO'),
+      block('Drop-off lobby at The Joseph Center, 2511 Belford Ave Ste B, Grand Junction, CO'),
     ],
     ctaLabel: 'Drop-off Details',
     ctaHref: '/contact',

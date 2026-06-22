@@ -23,8 +23,8 @@ async function run() {
     .patch('siteSettings')
     .set({
       businessContact: {
-        phone: '(970) 243-7672',
-        addressLine1: '2511 Belford Ave #9',
+        phone: '(970) 245-7672',
+        addressLine1: '2511 Belford Ave Ste B',
         addressLine2: 'Grand Junction, CO 81501',
       },
       hours: {

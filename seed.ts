@@ -1,5 +1,41 @@
-// Seed script — pre-populate Sanity with initial content
-// Run: npx sanity exec seed.ts --with-user-token
+// ─────────────────────────────────────────────────────────────────────────
+// Seed script — populates a Sanity dataset with initial content.
+//
+// SAFETY GUARANTEES (read this before running):
+//
+//   • Uses `createIfNotExists` for every document, so:
+//       • Existing documents are NEVER overwritten by re-running this.
+//       • Uploaded images on existing docs are NEVER touched.
+//       • Live values typed in Studio are NEVER overwritten.
+//     Re-running the seed on an already-populated dataset is a no-op.
+//
+//   • Pre-flight scan: before any writes, the script lists every _id in
+//     this file, queries Sanity for which already exist, and reports a
+//     summary so you can see exactly what will / won't be created. If
+//     everything already exists, the script exits without touching the
+//     database at all.
+//
+//   • Production gate: refuses to run against the production dataset
+//     unless CONFIRM_PRODUCTION=yes is set in the environment.
+//
+// What this script CANNOT do (by design):
+//
+//   • Update existing documents. If you've edited seed.ts to add new
+//     fields or change copy and you want those changes propagated to
+//     existing live docs, you must:
+//       a) edit each doc manually in Studio, OR
+//       b) write a targeted patch script (see studio/patch-*.ts for
+//          working examples — they fetch each doc, mutate the specific
+//          fields, then createOrReplace, preserving uploaded images and
+//          unrelated fields).
+//
+//   • Delete documents. Removing an entry from this file does nothing
+//     to live data. If you need to delete, do it in Studio.
+//
+// Run:
+//   SANITY_STUDIO_DATASET=staging pnpm sanity exec seed.ts --with-user-token
+//   CONFIRM_PRODUCTION=yes pnpm seed:production
+// ─────────────────────────────────────────────────────────────────────────
 import { getCliClient } from 'sanity/cli'
 
 const client = getCliClient()
@@ -22,14 +58,14 @@ const documents = [
     "ctaLabel": "Get Started",
     "ctaUrl": "/contact",
     "ctaHeadline": "We're Community Funded",
-    "ctaSubtext": "Your generosity restores dignity and changes lives in Grand Junction, Colorado.",
+    "ctaSubtext": "Your generosity restores dignity and changes lives across the Western Slope of Colorado.",
     "ctaFooterLabel": "Support Our Mission",
     "ctaFooterUrl": "/donate",
     "copyrightText": "© 2026 Joseph Center. All rights reserved.",
     "craftedBy": "Crafted by Phifer Web Solutions",
     "businessContact": {
-      "phone": "(970) 243-7672",
-      "addressLine1": "2511 Belford Ave #9",
+      "phone": "(970) 245-7672",
+      "addressLine1": "2511 Belford Ave Ste B",
       "addressLine2": "Grand Junction, CO 81501"
     },
     "hours": {
@@ -210,6 +246,13 @@ const documents = [
       {
         "_type": "partnersSection",
         "_key": "partnersSection-5"
+        // TODO (content task — 06/16/26 staff review): upload the following partner
+        // logos via Studio. PartnersSection.vue already renders whatever
+        // partners are stored in the `partners` document type, so no code
+        // change is needed — just create the docs with logo + name + (optional) link.
+        //   1. WSNARC (Western Slope Native American Resource Center)
+        //   2. Praise Him Ministries (Ridgway, CO) — regular food/supply donors
+        // Note: True Grit restaurant is NOT a partner — food came through Praise Him Ministries.
       }
     ]
   },
@@ -887,7 +930,7 @@ const documents = [
     ],
     "inlineCtas": [
       { "_key": "ifs-cta-1", "label": "Fill Out the Form", "href": "/forms/referral", "variant": "primary" },
-      { "_key": "ifs-cta-2", "label": "Call Us", "href": "tel:+19702437672", "variant": "ghost" }
+      { "_key": "ifs-cta-2", "label": "Call Us", "href": "tel:+19702457672", "variant": "ghost" }
     ],
     "donorAppealEnabled": true,
     "personDescriptor": "a disabled person in need",
@@ -1146,13 +1189,59 @@ const documents = [
 ]
 
 async function seed() {
-  console.log(`Seeding ${documents.length} document(s)...`)
+  console.log(`Dataset: ${dataset}`)
+  console.log(`Seed file contains ${documents.length} document(s).`)
+
+  // ── Pre-flight scan ───────────────────────────────────────────────────
+  // List every _id in this file, find which already exist in Sanity, and
+  // print a summary so we know exactly what will/won't be touched.
+  // createIfNotExists is a no-op for existing docs, but surfacing the
+  // delta up-front prevents any "did this just overwrite my edits?"
+  // worry — it can't.
+  const ids = documents
+    .map((d: { _id?: string }) => d._id)
+    .filter((id): id is string => typeof id === 'string')
+
+  const existingRows = (await client.fetch<{ _id: string }[]>(
+    `*[_id in $ids]{ _id }`,
+    { ids }
+  )) ?? []
+  const existing = new Set(existingRows.map((r) => r._id))
+
+  const toCreate = ids.filter((id) => !existing.has(id))
+  const toSkip = ids.filter((id) => existing.has(id))
+
+  console.log('')
+  console.log(`  ✓ Would create: ${toCreate.length}`)
+  if (toCreate.length) {
+    for (const id of toCreate) console.log(`      + ${id}`)
+  }
+  console.log(`  ↷ Already exist (will skip — values preserved): ${toSkip.length}`)
+  if (toSkip.length && toSkip.length <= 25) {
+    for (const id of toSkip) console.log(`      · ${id}`)
+  } else if (toSkip.length) {
+    for (const id of toSkip.slice(0, 10)) console.log(`      · ${id}`)
+    console.log(`      ... and ${toSkip.length - 10} more`)
+  }
+  console.log('')
+
+  if (toCreate.length === 0) {
+    console.log('Nothing to create. Existing docs were not touched.')
+    console.log('To update an existing doc, edit it in Studio or write a')
+    console.log('targeted patch script (see studio/patch-*.ts examples).')
+    return
+  }
+
+  // ── Commit ────────────────────────────────────────────────────────────
+  console.log(`Creating ${toCreate.length} new document(s)...`)
   const transaction = client.transaction()
   for (const doc of documents) {
-    transaction.createIfNotExists(doc)
+    // createIfNotExists is a hard guarantee: even if a different process
+    // wrote the doc between our scan and this commit, this won't overwrite.
+    transaction.createIfNotExists(doc as { _id: string; _type: string; [k: string]: unknown })
   }
   await transaction.commit()
-  console.log('Seed complete!')
+  console.log('Seed complete.')
 }
 
 seed().catch((err) => {

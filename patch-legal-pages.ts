@@ -71,9 +71,9 @@ function li(text: string): Block {
 const CONTACT_BLOCK: Block[] = [
   h2('Contact Us'),
   p('The Joseph Center'),
-  p('2511 Belford Ave #9'),
+  p('2511 Belford Ave Ste B'),
   p('Grand Junction, CO 81501'),
-  p('(970) 243-7672'),
+  p('(970) 245-7672'),
 ]
 
 const LAST_UPDATED = '2026-05-20'
@@ -217,9 +217,9 @@ function buildAccessibility() {
       h2('Feedback and Contact'),
       p('We welcome feedback on the accessibility of josephcentergj.com. If you experience barriers accessing any content or functionality, or if you need information in an alternative format, please contact us:'),
       p('The Joseph Center'),
-      p('2511 Belford Ave #9'),
+      p('2511 Belford Ave Ste B'),
       p('Grand Junction, CO 81501'),
-      p('(970) 243-7672'),
+      p('(970) 245-7672'),
       p('We aim to respond to accessibility feedback within 5 business days.'),
 
       h2('Technical Approach'),
