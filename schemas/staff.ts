@@ -43,6 +43,13 @@ export default defineType({
       description: 'Shown as small caption credit when set, e.g. "Photo by GJ Mahoney Photography".',
       type: 'string',
     }),
+    defineField({
+      name: 'quote',
+      title: 'Favorite quote',
+      description: 'Displayed on the staff card in place of the contact link. Optional.',
+      type: 'text',
+      rows: 3,
+    }),
   ],
   preview: {
     select: { title: 'name', subtitle: 'title', media: 'image' },

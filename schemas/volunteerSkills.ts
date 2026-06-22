@@ -26,6 +26,14 @@ export default defineType({
               validation: (Rule) => Rule.required(),
             }),
             defineField({
+              name: 'active',
+              title: 'Show on the volunteer form',
+              description:
+                'Uncheck to hide this category from the form without losing the skill list — handy when a category is paused but might come back.',
+              type: 'boolean',
+              initialValue: true,
+            }),
+            defineField({
               name: 'skills',
               title: 'Skills',
               description: 'One label per row. Shown as checkboxes under this category.',
@@ -35,12 +43,13 @@ export default defineType({
             }),
           ],
           preview: {
-            select: { title: 'name', skills: 'skills' },
-            prepare({ title, skills }: { title?: string; skills?: string[] }) {
+            select: { title: 'name', skills: 'skills', active: 'active' },
+            prepare({ title, skills, active }: { title?: string; skills?: string[]; active?: boolean }) {
               const count = Array.isArray(skills) ? skills.length : 0;
+              const status = active === false ? ' · hidden' : '';
               return {
                 title: title || 'Untitled category',
-                subtitle: `${count} skill${count === 1 ? '' : 's'}`,
+                subtitle: `${count} skill${count === 1 ? '' : 's'}${status}`,
               };
             },
           },

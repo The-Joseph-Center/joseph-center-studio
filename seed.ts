@@ -94,27 +94,32 @@ const documents = [
       {
         "_key": "cat-media",
         "name": "Media & Creative",
-        "skills": ["Photography", "Videography", "Graphic Design", "Social Media"]
+        "active": true,
+        "skills": ["Photography", "Videography", "Graphic Design"]
       },
       {
         "_key": "cat-legal",
         "name": "Legal & Financial",
+        "active": false,
         "skills": ["Legal / Attorney", "Accounting / Bookkeeping", "Financial Counseling"]
       },
       {
         "_key": "cat-medical",
         "name": "Medical & Wellness",
-        "skills": ["Medical / Nursing", "Mental Health / Counseling", "Dental"]
+        "active": true,
+        "skills": ["Medical / Nursing", "Dental", "Vision"]
       },
       {
         "_key": "cat-trades",
         "name": "Trades & Facilities",
+        "active": true,
         "skills": ["Carpentry / Repairs", "Plumbing", "Electrical", "Landscaping / Groundskeeping", "Painting"]
       },
       {
         "_key": "cat-other",
         "name": "Other",
-        "skills": ["Transportation / Driving", "Teaching / Tutoring", "IT / Technology", "Grant Writing", "Translation / Interpretation"]
+        "active": true,
+        "skills": ["Transportation / Driving", "Teaching / Tutoring", "Grant Writing", "Spanish Interpretation", "Sign Language (ASL) Interpretation", "Other Language Interpretation"]
       }
     ]
   },
@@ -193,7 +198,7 @@ const documents = [
           {
             "_key": "pg-golden-girls",
             "name": "Golden Girls Project",
-            "description": "Temporary housing and case management for women over 50 starting over in the Grand Valley.",
+            "description": "Temporary housing and Care Advocacy for women over 50 starting over in the Grand Valley.",
             "href": "/programs/golden-girls"
           }
         ]
@@ -810,7 +815,7 @@ const documents = [
       },
       {
         "_type": "block", "_key": "gg-3", "style": "normal", "markDefs": [],
-        "children": [{ "_type": "span", "_key": "gg-3s", "text": "In addition to shelter, we have an onsite health clinic available on the last Wednesday of each month, provided by Parkway Medical Care. We also provide help with onsite case management, navigating DHS programs (SNAP, Medicaid, Medicare, etc.), resources, case documents, long-term care, and housing assistance.", "marks": [] }]
+        "children": [{ "_type": "span", "_key": "gg-3s", "text": "In addition to shelter, we have an onsite health clinic available on the last Wednesday of each month, provided by Parkway Medical Care. We also provide help with onsite Care Advocacy, navigating DHS programs (SNAP, Medicaid, Medicare, etc.), resources, case documents, long-term care, and housing assistance.", "marks": [] }]
       }
     ],
     "inlineCtas": [
@@ -824,7 +829,7 @@ const documents = [
       "sponsorCard": {
         "enabled": true,
         "title": "Sponsor an Event",
-        "description": "Sponsor a Golden Girl for a month and help provide housing, food, and case management support.",
+        "description": "Sponsor a Golden Girl for a month and help provide housing, food, and Care Advocacy support.",
         "buttonLabel": "Contact Us",
         "buttonHref": "/contact"
       },
@@ -927,13 +932,31 @@ const documents = [
     "_id": "program-family-center",
     "title": "Family Center",
     "slug": { "_type": "slug", "current": "family-center" },
-    "metaDescription": "Parent advocacy and support navigating parent/child legal challenges in Grand Junction, CO.",
-    "visionHeading": "Our Vision",
-    "visionBody": "Providing parents with a support system to navigate parent / child legal challenges.",
+    "metaDescription": "Family Empowerment Model (FEM) life-skills program for pregnant women, domestic violence survivors, and working families in Grand Junction.",
+    "visionHeading": "Where This Began",
+    "visionBody": "In 2023, we saw an influx of pregnant women, domestic violence survivors, and working families who needed more than a referral — they needed someone in their corner. So we built a program to walk alongside them.",
     "howWeHelpContent": [
       {
-        "_type": "block", "_key": "fc-1", "style": "normal", "markDefs": [],
-        "children": [{ "_type": "span", "_key": "fc-1s", "text": "Our parent advocacy program provides support to parents navigating the legal system to maintain or restore custody of their children.", "marks": [] }]
+        "_type": "block", "_key": "fc-h-1", "style": "normal", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "fc-h-1s", "text": "The Family Center is built on the Family Empowerment Model. We walk alongside unhoused pregnant women, domestic violence survivors, and working families — providing hands-on support from where they are to success.", "marks": [] }]
+      },
+      {
+        "_type": "block", "_key": "fc-h-2", "style": "normal", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "fc-h-2s", "text": "Our Family Empowerment Model (FEM) is a structured, life-skills curriculum. Participants learn by doing:", "marks": [] }]
+      },
+      { "_type": "block", "_key": "fc-h-3", "style": "normal", "listItem": "bullet", "level": 1, "markDefs": [], "children": [{ "_type": "span", "_key": "fc-h-3s", "text": "Cooking and cleaning", "marks": [] }] },
+      { "_type": "block", "_key": "fc-h-4", "style": "normal", "listItem": "bullet", "level": 1, "markDefs": [], "children": [{ "_type": "span", "_key": "fc-h-4s", "text": "Gardening", "marks": [] }] },
+      { "_type": "block", "_key": "fc-h-5", "style": "normal", "listItem": "bullet", "level": 1, "markDefs": [], "children": [{ "_type": "span", "_key": "fc-h-5s", "text": "Job search and career readiness", "marks": [] }] },
+      { "_type": "block", "_key": "fc-h-6", "style": "normal", "listItem": "bullet", "level": 1, "markDefs": [], "children": [{ "_type": "span", "_key": "fc-h-6s", "text": "Time management", "marks": [] }] },
+      { "_type": "block", "_key": "fc-h-7", "style": "normal", "listItem": "bullet", "level": 1, "markDefs": [], "children": [{ "_type": "span", "_key": "fc-h-7s", "text": "Budgeting and financial skills", "marks": [] }] },
+      { "_type": "block", "_key": "fc-h-8", "style": "normal", "listItem": "bullet", "level": 1, "markDefs": [], "children": [{ "_type": "span", "_key": "fc-h-8s", "text": "Parenting and communication", "marks": [] }] },
+      {
+        "_type": "block", "_key": "fc-h-9", "style": "normal", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "fc-h-9s", "text": "Beyond the curriculum, we provide wrap-around services — Care Advocacy, case explanation, and connection to housing, treatment, and ongoing services.", "marks": [] }]
+      },
+      {
+        "_type": "block", "_key": "fc-h-10", "style": "normal", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "fc-h-10s", "text": "So we created a safe space. Not a case file. Not a court process. A place where families can build the skills, confidence, and support network they need to move forward.", "marks": [] }]
       }
     ],
     "inlineCtas": [
@@ -947,14 +970,14 @@ const documents = [
       "sponsorCard": {
         "enabled": true,
         "title": "Sponsor an Event",
-        "description": "Sponsor parent advocacy services and help families navigate the legal system to stay together.",
+        "description": "Sponsor Family Empowerment Model sessions and wrap-around support for the families we serve.",
         "buttonLabel": "Contact Us",
         "buttonHref": "/contact"
       },
       "donateCard": {
         "enabled": true,
         "title": "Donate Supplies",
-        "description": "Your donation funds parent support services and resources for families in crisis.",
+        "description": "Your gift funds curriculum supplies, gardening materials, and the daily needs of families in the FEM program.",
         "buttonLabel": "Give",
         "buttonHref": "/donate"
       }
@@ -964,14 +987,14 @@ const documents = [
       "learnCard": {
         "enabled": true,
         "title": "Learn",
-        "description": "Learn about parent advocacy and the legal challenges families face in the Grand Junction area.",
+        "description": "Learn about the Family Empowerment Model and how it helps pregnant women, domestic violence survivors, and working families.",
         "buttonLabel": "Learn More",
         "buttonHref": "/our-story"
       },
       "resourcesCard": {
         "enabled": true,
         "title": "Free Resources",
-        "description": "Free resources for parents including legal aid guides, support groups, and family services contacts.",
+        "description": "Free resources for families including life-skills guides, parenting support, and community service connections.",
         "buttonLabel": "Learn More",
         "buttonHref": "/our-story"
       }

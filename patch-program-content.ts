@@ -157,7 +157,7 @@ const foodPantry = {
 const goldenGirls = {
   title: 'Golden Girls Project',
   metaDescription:
-    'Temporary housing and case management for women over 50 in the Grand Valley — a safe place to start over.',
+    'Temporary housing and Care Advocacy for women over 50 in the Grand Valley — a safe place to start over.',
   visionHeading: 'Where This Began',
   visionBody:
     'Women over 50 facing homelessness are often invisible in the system. We saw them — waiting on benefits, rebuilding after loss, starting over with nowhere stable to land. So in 2020, we built a place specifically for them.',
@@ -167,7 +167,7 @@ const goldenGirls = {
       'The Golden Girls Project provides up to six months of temporary housing for women over 50 in the Grand Valley, along with the support to use that time well. Our home has 16 beds across a shared, safe environment with full kitchen, bathroom, and laundry access.'
     ),
     h4('gg-h-2', 'Beyond housing'),
-    li('gg-h-3', 'Onsite case management — benefits navigation, ID recovery, document help'),
+    li('gg-h-3', 'Onsite Care Advocacy — benefits navigation, ID recovery, document help'),
     li('gg-h-4', 'A monthly health clinic provided by Marillac Medical Clinic'),
     li('gg-h-5', 'Help with SNAP, Medicaid, Medicare, VA benefits, and long-term care'),
     li('gg-h-6', 'A path toward permanent, stable housing'),

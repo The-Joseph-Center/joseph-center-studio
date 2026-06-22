@@ -58,7 +58,7 @@ const PROGRAMS = [
     _key: 'pg-golden-girls',
     name: 'Golden Girls Project',
     description:
-      'Temporary housing and case management for women over 50 starting over in the Grand Valley.',
+      'Temporary housing and Care Advocacy for women over 50 starting over in the Grand Valley.',
     href: '/programs/golden-girls',
   },
 ]

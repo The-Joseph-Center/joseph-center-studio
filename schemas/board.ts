@@ -22,6 +22,20 @@ export default defineType({
       type: 'image',
       options: { hotspot: true },
     }),
+    defineField({
+      name: 'quote',
+      title: 'Favorite quote',
+      description: 'Displayed on the board card. Optional.',
+      type: 'text',
+      rows: 3,
+    }),
+    defineField({
+      name: 'isAdvisoryBoard',
+      title: 'Advisory Board member',
+      description: 'Check for advisory board members — displays "Advisory Board Member" label under the name.',
+      type: 'boolean',
+      initialValue: false,
+    }),
   ],
   preview: {
     select: { title: 'name', media: 'image' },
