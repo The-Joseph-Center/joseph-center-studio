@@ -117,35 +117,6 @@ export default defineType({
           initialValue: 'Colorado Gives',
         }),
         defineField({
-          name: 'announcementBar',
-          title: 'Announcement Bar',
-          description: 'Dismissible bar that renders below the header. Auto-hides after expiresAt — no manual action needed.',
-          type: 'object',
-          fields: [
-            defineField({ name: 'enabled', title: 'Enabled', type: 'boolean', initialValue: true }),
-            defineField({
-              name: 'text',
-              title: 'Text',
-              type: 'string',
-              initialValue: 'Featured on Colorado Gives. Double the impact —',
-            }),
-            defineField({ name: 'linkLabel', title: 'Link Label', type: 'string', initialValue: 'Donate Now →' }),
-            defineField({
-              name: 'linkUrl',
-              title: 'Link URL',
-              type: 'url',
-              initialValue: 'https://www.coloradogives.org/donate/The-Joseph-Center',
-            }),
-            defineField({
-              name: 'expiresAt',
-              title: 'Auto-hide after',
-              description: 'Bar hides automatically after this date. For Colorado Gives → set to 2026-06-30 23:59 UTC.',
-              type: 'datetime',
-              initialValue: '2026-06-30T23:59:00.000Z',
-            }),
-          ],
-        }),
-        defineField({
           name: 'campaignOverlay',
           title: 'Campaign Overlay (optional)',
           description:

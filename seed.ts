@@ -115,13 +115,6 @@ const documents = [
       "coloradoGivesUrl": "https://www.coloradogives.org/donate/The-Joseph-Center",
       "harnessUrl": "https://josephcenter.harnessgiving.org/donate",
       "campaignName": "Colorado Gives",
-      "announcementBar": {
-        "enabled": true,
-        "text": "Featured on Colorado Gives. Double the impact —",
-        "linkLabel": "Donate Now →",
-        "linkUrl": "https://www.coloradogives.org/donate/The-Joseph-Center",
-        "expiresAt": "2026-06-30T23:59:00.000Z"
-      },
       "campaignOverlay": {
         "enabled": false,
         "campaignName": "",
