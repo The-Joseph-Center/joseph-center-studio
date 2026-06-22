@@ -71,6 +71,66 @@ const documents = [
     "hours": {
       "office": { "days": "Monday – Friday", "time": "8:00am – 5:00pm" },
       "dayShelter": { "days": "Mon – Sat", "time": "8:00am – 3:00pm" }
+    },
+    // ─────────────────────────────────────────────────────────────────────
+    // DONATION PLATFORM CONFIGURATION
+    //
+    // PLATFORM SWITCH INSTRUCTIONS — for Mona or site admin:
+    //   ═══════════════════════════════════════════════════════════════
+    //   July 1, 2026 — Switch to Harness:
+    //     1. Studio → Site Settings → Donation Platform Configuration
+    //     2. Change "Active Giving Platform" to "Harness (in-site modal)"
+    //     3. Save and publish
+    //     4. Update or disable the Announcement Bar
+    //     5. Test: click Give button on live site → Harness modal opens
+    //
+    //   January 1, 2027 — Switch to Stripe:
+    //     1. Studio → Site Settings → Donation Platform Configuration
+    //     2. Change "Active Giving Platform" to "Stripe (internal checkout)"
+    //     3. Save and publish
+    //     4. Disable the Announcement Bar
+    //     5. Test: click Give button → internal /donate modal opens
+    //   ═══════════════════════════════════════════════════════════════
+    //
+    // RECURRING DONOR MIGRATION — pre-January 2027 operational checklist:
+    //   1. Pull all active Harness recurring donor records (export from
+    //      Harness dashboard).
+    //   2. Cross-reference with AWeber donor list to identify who needs
+    //      outreach.
+    //   3. Send AWeber campaign (tag 'harness-recurring') in early December:
+    //        Subject: "We're upgrading our giving platform — action needed"
+    //        Body: Warm thank-you + explanation + link to new setup
+    //        CTA: "Set up your recurring gift in our new system →"
+    //          → /donate?recurring=true
+    //   4. Track click-throughs — anyone who clicks = migrated. Tag them
+    //      'migrated-recurring' in AWeber for reporting.
+    //   5. Week of Dec 15: personal follow-up from Mona to non-migrated
+    //      recurring donors.
+    //   6. Jan 1: flip activePlatform to 'stripe' in Studio.
+    //   7. Jan 7: cancel remaining Harness recurring subscriptions (after
+    //      grace period).
+    // ─────────────────────────────────────────────────────────────────────
+    "donationConfig": {
+      "activePlatform": "colorado-gives",
+      "coloradoGivesUrl": "https://www.coloradogives.org/donate/The-Joseph-Center",
+      "harnessUrl": "https://josephcenter.harnessgiving.org/donate",
+      "campaignName": "Colorado Gives",
+      "announcementBar": {
+        "enabled": true,
+        "text": "Featured on Colorado Gives. Double the impact —",
+        "linkLabel": "Donate Now →",
+        "linkUrl": "https://www.coloradogives.org/donate/The-Joseph-Center",
+        "expiresAt": "2026-06-30T23:59:00.000Z"
+      },
+      "campaignOverlay": {
+        "enabled": false,
+        "campaignName": "",
+        "campaignUrl": "",
+        "badgeText": "",
+        "description": "",
+        "startsAt": null,
+        "expiresAt": null
+      }
     }
   },
   {

@@ -1,7 +1,25 @@
-// One-off — full content refresh for all program documents per
-// build-record/28-program-pages-content-update.md.
+// ⚠️ ARCHIVED — DO NOT RE-RUN ⚠️
 //
-// Changes:
+// This script was the original program-content refresh from build-record/28.
+// Its howWeHelpContent for Day Shelter, Food Pantry, and Golden Girls has
+// since been SUPERSEDED by patch-content-review.ts (the 06/16/26 staff
+// review). Re-running this would clobber:
+//   - Day Shelter's no-showers/no-laundry + ID-required + climate-controlled
+//     framing back to the original showers/laundry content
+//   - Food Pantry's "T/W/F food boxes only, 1/client/month, snack packs"
+//     content back to the original "take-home food boxes" wording
+//   - Golden Girls' 15 beds + Community Health Care Partners + SSI/SSDI
+//     content back to 16 beds + Marillac Medical Clinic
+//
+// The script is intentionally guarded to fail-closed on launch. To bypass
+// the guard for a legitimate re-run (you've checked with the team and want
+// to overwrite the live content), set ALLOW_LEGACY_PROGRAM_PATCH=yes.
+//
+// Kept on disk because the donor copy / personDescriptor / inlineCtas /
+// metadata for IFS + Family Center are still valid — useful as a reference
+// for shape, not for execution.
+//
+// Original purpose (build-record/28):
 //   - All 5 programs: visionHeading → "Where This Began", new vision body,
 //     new donor copy + ask, new CTA labels, new programVideos slot
 //   - program-day-shelter: title splits from "Day Shelter & Food Pantry" to
@@ -10,16 +28,19 @@
 //   - program-golden-girls: title → "Golden Girls Project"; "transitional"
 //     replaced with "temporary"
 //   - footerColumns: programs column splits the first link into two
-//
-// Idempotent. Safe to re-run. Existing donationsSection/resourcesSection
-// content is preserved — only the programName labels on day-shelter are
-// updated.
-//
-// Run (staging):
-//   SANITY_STUDIO_DATASET=staging pnpm sanity exec patch-program-content.ts --with-user-token
-// Run (production — requires explicit opt-in):
-//   CONFIRM_PRODUCTION=yes SANITY_STUDIO_DATASET=production pnpm sanity exec patch-program-content.ts --with-user-token
 import { getCliClient } from 'sanity/cli'
+
+if (process.env.ALLOW_LEGACY_PROGRAM_PATCH !== 'yes') {
+  console.error(
+    '\n⚠️  patch-program-content.ts is ARCHIVED.\n\n' +
+      'This script is superseded by patch-content-review.ts (06/16/26 staff\n' +
+      'review). Re-running it would clobber the current Day Shelter / Food\n' +
+      'Pantry / Golden Girls content in Sanity.\n\n' +
+      'If you really mean to re-run, set:\n' +
+      '  ALLOW_LEGACY_PROGRAM_PATCH=yes\n'
+  )
+  process.exit(1)
+}
 
 const client = getCliClient()
 const dataset = client.config().dataset

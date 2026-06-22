@@ -74,6 +74,112 @@ export default defineType({
       ],
     }),
     defineField({
+      name: 'donationConfig',
+      title: 'Donation Platform Configuration',
+      description:
+        'Controls which giving platform is active sitewide. Switch activePlatform to flip all Give/Donate buttons at once — no developer involvement needed. See seed.ts for the operational checklist on cutover dates.',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'activePlatform',
+          title: 'Active Giving Platform',
+          type: 'string',
+          options: {
+            list: [
+              { title: 'Colorado Gives (external redirect)', value: 'colorado-gives' },
+              { title: 'Harness (in-site modal)', value: 'harness' },
+              { title: 'Stripe (internal checkout)', value: 'stripe' },
+            ],
+            layout: 'radio',
+          },
+          initialValue: 'colorado-gives',
+          validation: (Rule) => Rule.required(),
+          description: 'Colorado Gives → June 30 2026. Harness → July 1 – Dec 31 2026. Stripe → Jan 1 2027 onward.',
+        }),
+        defineField({
+          name: 'coloradoGivesUrl',
+          title: 'Colorado Gives Donate URL',
+          type: 'url',
+          initialValue: 'https://www.coloradogives.org/donate/The-Joseph-Center',
+        }),
+        defineField({
+          name: 'harnessUrl',
+          title: 'Harness Donate URL (fallback)',
+          description: 'Direct link used as a fallback if the Harness modal widget fails to load.',
+          type: 'url',
+          initialValue: 'https://josephcenter.harnessgiving.org/donate',
+        }),
+        defineField({
+          name: 'campaignName',
+          title: 'Current Campaign Name',
+          description: 'e.g. "Colorado Gives" — shown in announcement bar and button tooltips.',
+          type: 'string',
+          initialValue: 'Colorado Gives',
+        }),
+        defineField({
+          name: 'announcementBar',
+          title: 'Announcement Bar',
+          description: 'Dismissible bar that renders below the header. Auto-hides after expiresAt — no manual action needed.',
+          type: 'object',
+          fields: [
+            defineField({ name: 'enabled', title: 'Enabled', type: 'boolean', initialValue: true }),
+            defineField({
+              name: 'text',
+              title: 'Text',
+              type: 'string',
+              initialValue: 'Featured on Colorado Gives. Double the impact —',
+            }),
+            defineField({ name: 'linkLabel', title: 'Link Label', type: 'string', initialValue: 'Donate Now →' }),
+            defineField({
+              name: 'linkUrl',
+              title: 'Link URL',
+              type: 'url',
+              initialValue: 'https://www.coloradogives.org/donate/The-Joseph-Center',
+            }),
+            defineField({
+              name: 'expiresAt',
+              title: 'Auto-hide after',
+              description: 'Bar hides automatically after this date. For Colorado Gives → set to 2026-06-30 23:59 UTC.',
+              type: 'datetime',
+              initialValue: '2026-06-30T23:59:00.000Z',
+            }),
+          ],
+        }),
+        defineField({
+          name: 'campaignOverlay',
+          title: 'Campaign Overlay (optional)',
+          description:
+            'When active and within the date window, shows a featured campaign option alongside Stripe on the donate page. Use for Colorado Gives Day, Giving Tuesday, matching campaigns, etc. Auto-hides on expiresAt. Only shown for one-time gifts; recurring always goes through Stripe.',
+          type: 'object',
+          fields: [
+            defineField({ name: 'enabled', title: 'Enabled', type: 'boolean', initialValue: false }),
+            defineField({
+              name: 'campaignName',
+              title: 'Campaign Name',
+              description: 'e.g. "Colorado Gives Day 2027"',
+              type: 'string',
+            }),
+            defineField({ name: 'campaignUrl', title: 'Campaign URL', type: 'url' }),
+            defineField({
+              name: 'badgeText',
+              title: 'Badge Text',
+              description: 'Short match/incentive text shown on the card. e.g. "Gifts matched up to $50,000"',
+              type: 'string',
+            }),
+            defineField({
+              name: 'description',
+              title: 'Description',
+              description: 'One sentence explaining the campaign.',
+              type: 'text',
+              rows: 2,
+            }),
+            defineField({ name: 'startsAt', title: 'Campaign Starts', type: 'datetime' }),
+            defineField({ name: 'expiresAt', title: 'Campaign Ends', type: 'datetime' }),
+          ],
+        }),
+      ],
+    }),
+    defineField({
       name: 'ctaHeadline',
       title: 'Footer CTA band — heading',
       description: 'Headline shown in the dark CTA strip above the footer.',
