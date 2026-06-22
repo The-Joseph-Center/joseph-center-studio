@@ -59,7 +59,7 @@ const documents = [
         "links": [
           { "_key": "p-1", "_type": "navLink", "label": "Day Shelter & Food Pantry", "url": "/programs/day-shelter" },
           { "_key": "p-2", "_type": "navLink", "label": "Golden Girls", "url": "/programs/golden-girls" },
-          { "_key": "p-3", "_type": "navLink", "label": "Integrated Financial Services", "url": "/programs/financial-services" },
+          { "_key": "p-3", "_type": "navLink", "label": "Integrated Financial Services", "url": "/programs/integrated-financial-services" },
           { "_key": "p-4", "_type": "navLink", "label": "Family Center", "url": "/programs/family-center" },
           { "_key": "p-5", "_type": "navLink", "label": "Events", "url": "/events" }
         ]
@@ -188,7 +188,7 @@ const documents = [
             "_key": "pg-financial-services",
             "name": "Integrated Financial Services",
             "description": "Representative Payee, guardianship, and budget counseling across 16 counties of the Western Slope.",
-            "href": "/programs/financial-services"
+            "href": "/programs/integrated-financial-services"
           },
           {
             "_key": "pg-golden-girls",
@@ -858,7 +858,7 @@ const documents = [
     "_type": "program",
     "_id": "program-financial-services",
     "title": "Integrated Financial Services",
-    "slug": { "_type": "slug", "current": "financial-services" },
+    "slug": { "_type": "slug", "current": "integrated-financial-services" },
     "metaDescription": "Financial management of social security and veterans benefits for disabled people at risk of homelessness.",
     "visionHeading": "Our Vision",
     "visionBody": "Integrated Financial Services provides resources and accounting to disabled people at-risk of homelessness because everyone deserves to have peace of mind.",

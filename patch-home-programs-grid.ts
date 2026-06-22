@@ -52,7 +52,7 @@ const PROGRAMS = [
     name: 'Integrated Financial Services',
     description:
       'Representative Payee, guardianship, and budget counseling across 16 counties of the Western Slope.',
-    href: '/programs/financial-services',
+    href: '/programs/integrated-financial-services',
   },
   {
     _key: 'pg-golden-girls',
