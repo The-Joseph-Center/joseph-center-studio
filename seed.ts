@@ -1239,6 +1239,17 @@ const documents = [
     "successMessage": "Thank you for signing up for the Angel Tree program! We'll follow up with more details.",
     "notifyEmail": ""
   },
+  // ── Default blog author (org account) ───────────────────────────────
+  // Individual authors get added via Studio. This is the catch-all "by The
+  // Joseph Center" author used when a post is left author-less. isOrg=true
+  // tells the frontend to hide the "by …" byline for org posts.
+  {
+    "_type": "author",
+    "_id": "author-jc",
+    "name": "The Joseph Center",
+    "isOrg": true,
+    "slug": { "_type": "slug", "current": "the-joseph-center" }
+  },
   // ── Initial community resources ─────────────────────────────────────
   // Seeded from the 06/16/26 site review meeting. Staff adds more via
   // Studio once Sam provides the full punch list.

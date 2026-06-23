@@ -32,6 +32,7 @@ import mapEmbedSection from './mapEmbedSection';
 import volunteerSkills from './volunteerSkills';
 import activeCampaignsBanner from './activeCampaignsBanner';
 import resource from './resource';
+import author from './author';
 
 export const schemaTypes = [
   page,
@@ -70,4 +71,5 @@ export const schemaTypes = [
   volunteerSkills,
   activeCampaignsBanner,
   resource,
+  author,
 ];
