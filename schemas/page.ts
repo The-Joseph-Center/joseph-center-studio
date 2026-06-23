@@ -156,6 +156,13 @@ const partnersSection = {
           defineField({ name: 'name', title: 'Partner Name', type: 'string' }),
           defineField({ name: 'logo', title: 'Logo', type: 'image' }),
           defineField({ name: 'href', title: 'Link', type: 'url' }),
+          defineField({
+            name: 'darkBg',
+            title: 'Use dark background',
+            description: "Turn on for partners whose logo is light/white. Renders the logo on a deep-green card so it stays visible.",
+            type: 'boolean',
+            initialValue: false,
+          }),
         ],
         preview: {
           select: { title: 'name', media: 'logo' },
