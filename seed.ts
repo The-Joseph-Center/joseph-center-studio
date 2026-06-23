@@ -1238,6 +1238,31 @@ const documents = [
     ],
     "successMessage": "Thank you for signing up for the Angel Tree program! We'll follow up with more details.",
     "notifyEmail": ""
+  },
+  // ── Initial community resources ─────────────────────────────────────
+  // Seeded from the 06/16/26 site review meeting. Staff adds more via
+  // Studio once Sam provides the full punch list.
+  {
+    "_type": "resource",
+    "_id": "resource-peace-justice-calendar",
+    "title": "Peace & Justice Center — Monthly Calendar",
+    "url": "https://gjpeaceandjustice.org",
+    "description": "Monthly calendar of community resources, events, and services in Grand Junction.",
+    "category": "community",
+    "programs": ["all"],
+    "featured": true,
+    "active": true
+  },
+  {
+    "_type": "resource",
+    "_id": "resource-wsnarc",
+    "title": "Western Slope Native American Resource Center (WSNARC)",
+    "url": "https://wsnarc.org",
+    "description": "Resources and advocacy for Native American individuals and families on the Western Slope.",
+    "category": "native-american",
+    "programs": ["all"],
+    "featured": false,
+    "active": true
   }
 ]
 

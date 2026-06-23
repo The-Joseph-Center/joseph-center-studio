@@ -31,6 +31,7 @@ import latestCoffeeChatSection from './latestCoffeeChatSection';
 import mapEmbedSection from './mapEmbedSection';
 import volunteerSkills from './volunteerSkills';
 import activeCampaignsBanner from './activeCampaignsBanner';
+import resource from './resource';
 
 export const schemaTypes = [
   page,
@@ -68,4 +69,5 @@ export const schemaTypes = [
   mapEmbedSection,
   volunteerSkills,
   activeCampaignsBanner,
+  resource,
 ];
