@@ -232,7 +232,7 @@ const financialServices = {
     ),
     p(
       'ifs-h-6',
-      'Fees: Representative Payee — $50 per month. Guardianship — $80 per month plus filing fees. Sliding scale available for those who qualify.',
+      "Fees: Representative Payee — $57 per month for 2026 (set annually by the Social Security Administration). VA Fiduciary Fee — a percentage of the veteran's benefit, set by the VA. Guardianship — $350 startup fee plus $50 per hour. No sliding scale available.",
       ['em']
     ),
     h4('ifs-h-7', 'Budget Counseling'),
