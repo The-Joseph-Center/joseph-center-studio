@@ -120,7 +120,7 @@ const FOOD_PANTRY_HOW_WE_HELP: Block[] = [
 ]
 
 const FOOD_PANTRY_DONOR_INTRO =
-  'A hot meal is one of the most human things one person can offer another. On average, we serve up to 60 meals per day — but only because people like you make it possible.\n\nThe Joseph Center is 100% community funded — and every dollar goes directly to the people we serve.'
+  'A hot meal is one of the most human things one person can offer another. On average, we serve up to 60 meals per day — but only because people like you make it possible.\n\nThe Joseph Center is 100% community & foundation funded — and every dollar goes directly to the people we serve.'
 
 // ── Part C — Golden Girls Project ────────────────────────────────────────
 

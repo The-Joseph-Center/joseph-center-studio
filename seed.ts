@@ -57,7 +57,7 @@ const documents = [
     "siteName": "Joseph Center",
     "ctaLabel": "Get Started",
     "ctaUrl": "/contact",
-    "ctaHeadline": "We're Community Funded",
+    "ctaHeadline": "We're Community & Foundation Funded",
     "ctaSubtext": "Your generosity restores dignity and changes lives across the Western Slope of Colorado.",
     "ctaFooterLabel": "Support Our Mission",
     "ctaFooterUrl": "/donate",

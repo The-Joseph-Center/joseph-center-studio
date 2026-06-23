@@ -132,7 +132,7 @@ const dayShelter = {
   ],
   personDescriptor: 'someone',
   donorIntro:
-    "Right now, someone in the Grand Valley is trying to figure out what to do next. The Day Shelter is where they find out they have options — but only because people like you make it possible.\n\nThe Joseph Center is 100% community funded. For as little as $25 a month, you can be the reason someone finds their next step.",
+    "Right now, someone in the Grand Valley is trying to figure out what to do next. The Day Shelter is where they find out they have options — but only because people like you make it possible.\n\nThe Joseph Center is 100% community & foundation funded. For as little as $25 a month, you can be the reason someone finds their next step.",
   donorAsk: 25,
   donorAppealEnabled: true,
   programVideos: [],
@@ -168,7 +168,7 @@ const foodPantry = {
   ],
   personDescriptor: 'someone',
   donorIntro:
-    'A hot meal is one of the most human things one person can offer another. For as little as $15 a month, you can make sure that meal is waiting for someone who needs it in the Grand Valley.\n\nThe Joseph Center is 100% community funded — and every dollar goes directly to the people we serve.',
+    'A hot meal is one of the most human things one person can offer another. For as little as $15 a month, you can make sure that meal is waiting for someone who needs it in the Grand Valley.\n\nThe Joseph Center is 100% community & foundation funded — and every dollar goes directly to the people we serve.',
   donorAsk: 15, // food program rate
   donorAppealEnabled: true,
   programVideos: [],
@@ -199,7 +199,7 @@ const goldenGirls = {
   ],
   personDescriptor: 'a woman over 50',
   donorIntro:
-    "Right now, a woman over 50 in the Grand Valley is trying to find solid ground. For as little as $25 a month, you can make sure she has a safe place to find it.\n\nThe Joseph Center is 100% community funded. Without people like you, the door doesn't stay open.",
+    "Right now, a woman over 50 in the Grand Valley is trying to find solid ground. For as little as $25 a month, you can make sure she has a safe place to find it.\n\nThe Joseph Center is 100% community & foundation funded. Without people like you, the door doesn't stay open.",
   donorAsk: 25,
   donorAppealEnabled: true,
   programVideos: [], // TODO: Add Golden Girls program testimonial video URLs when available
@@ -252,7 +252,7 @@ const financialServices = {
   ],
   personDescriptor: 'someone navigating disability and benefits',
   donorIntro:
-    "Stability doesn't happen by accident. For someone navigating disability, benefits, and the risk of homelessness, having a knowledgeable guide can be the difference between housed and not.\n\nFor as little as $25 a month, you can help someone across the Western Slope build a financial foundation that holds.\n\nThe Joseph Center is 100% community funded — every dollar stays local.",
+    "Stability doesn't happen by accident. For someone navigating disability, benefits, and the risk of homelessness, having a knowledgeable guide can be the difference between housed and not.\n\nFor as little as $25 a month, you can help someone across the Western Slope build a financial foundation that holds.\n\nThe Joseph Center is 100% community & foundation funded — every dollar stays local.",
   donorAsk: 25,
   donorAppealEnabled: true,
   programVideos: [], // TODO: Add IFS anchor story video URL when available
@@ -292,7 +292,7 @@ const familyCenter = {
   ],
   personDescriptor: 'a parent',
   donorIntro:
-    "Right now, a parent in Grand Junction is fighting to bring their family back together. For as little as $25 a month, you can make sure they don't have to do it alone.\n\nThe Joseph Center is 100% community funded — and every dollar goes directly to the families we serve.",
+    "Right now, a parent in Grand Junction is fighting to bring their family back together. For as little as $25 a month, you can make sure they don't have to do it alone.\n\nThe Joseph Center is 100% community & foundation funded — and every dollar goes directly to the families we serve.",
   donorAsk: 25,
   donorAppealEnabled: true,
   programVideos: [], // TODO: Videos available — assign IDs when ready to publish

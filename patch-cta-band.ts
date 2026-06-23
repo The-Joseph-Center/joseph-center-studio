@@ -22,7 +22,7 @@ async function run() {
   await client
     .patch('siteSettings')
     .set({
-      ctaHeadline: "We're Community Funded",
+      ctaHeadline: "We're Community & Foundation Funded",
       ctaSubtext:
         'Your generosity restores dignity and changes lives in Grand Junction, Colorado.',
       ctaFooterLabel: 'Support Our Mission',
