@@ -28,6 +28,7 @@ import banner from './banner';
 import dynamicForm from './dynamicForm';
 import stayConnectedSection from './stayConnectedSection';
 import latestCoffeeChatSection from './latestCoffeeChatSection';
+import latestBlogSection from './latestBlogSection';
 import mapEmbedSection from './mapEmbedSection';
 import volunteerSkills from './volunteerSkills';
 import activeCampaignsBanner from './activeCampaignsBanner';
@@ -67,6 +68,7 @@ export const schemaTypes = [
   dynamicForm,
   stayConnectedSection,
   latestCoffeeChatSection,
+  latestBlogSection,
   mapEmbedSection,
   volunteerSkills,
   activeCampaignsBanner,

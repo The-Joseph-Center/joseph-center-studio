@@ -617,6 +617,8 @@ export default defineType({
         { type: 'stayConnectedSection' },
         // Coffee Chat teaser — surface the latest episode on content pages
         { type: 'latestCoffeeChatSection' },
+        // Blog teaser — surface the latest posts on content pages
+        { type: 'latestBlogSection' },
         // Map embed — full-width Google Maps iframe (e.g. below contact form)
         { type: 'mapEmbedSection' },
         // Active campaigns banner — surfaces live campaigns from Turso (home page, etc.)
