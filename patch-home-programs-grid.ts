@@ -64,7 +64,9 @@ const PROGRAMS = [
 ]
 
 type Section = { _type: string; _key: string; heading?: string; programs?: unknown[] }
-type PageHome = { _id: string; _rev: string; sections: Section[] }
+// `_type` is included because these scripts fetch whole documents (no GROQ
+// projection) and hand them straight to createOrReplace, which requires it.
+type PageHome = { _id: string; _type: string; _rev: string; sections: Section[] }
 
 async function run() {
   console.log(`Patching page-home programsGrid on dataset: ${dataset}`)

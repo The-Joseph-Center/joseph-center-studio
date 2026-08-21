@@ -36,7 +36,9 @@ type Section = {
   heading?: string
   body?: Block[]
 }
-type PageDoc = { _id: string; _rev: string; sections: Section[] }
+// `_type` is included because these scripts fetch whole documents (no GROQ
+// projection) and hand them straight to createOrReplace, which requires it.
+type PageDoc = { _id: string; _type: string; _rev: string; sections: Section[] }
 
 function patchVision(section: Section): 'updated' | 'already-current' | 'skipped' {
   if (section._type !== 'textContent' || section.heading !== 'Our Vision' || !section.body) return 'skipped'

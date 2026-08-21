@@ -23,7 +23,9 @@ if (dataset === 'production' && process.env.CONFIRM_PRODUCTION !== 'yes') {
 }
 
 type NavItem = { _key: string; label?: string; url?: string }
-type NavDoc = { _id: string; _rev?: string; navType?: string; items?: NavItem[] }
+// `_type` is included because these scripts fetch whole documents (no GROQ
+// projection) and hand them straight to createOrReplace, which requires it.
+type NavDoc = { _id: string; _type: string; _rev?: string; navType?: string; items?: NavItem[] }
 
 function looksLikeDonate(item: NavItem): boolean {
   const label = (item.label || '').trim().toLowerCase()

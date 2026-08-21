@@ -104,7 +104,7 @@ export default defineType({
   ],
   preview: {
     select: { title: 'title', media: 'featuredImage', author: 'author.name', type: 'postType' },
-    prepare: ({ title, media, author, type }: { title?: string; media?: unknown; author?: string; type?: string }) => ({
+    prepare: ({ title, media, author, type }: { title?: string; media?: any; author?: string; type?: string }) => ({
       title: title || 'Untitled post',
       subtitle: `${type ?? 'manual'} · ${author ?? 'The Joseph Center'}`,
       media,

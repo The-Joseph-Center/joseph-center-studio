@@ -46,7 +46,7 @@ export default defineType({
   ],
   preview: {
     select: { title: 'name', media: 'avatar', isOrg: 'isOrg' },
-    prepare: ({ title, media, isOrg }: { title?: string; media?: unknown; isOrg?: boolean }) => ({
+    prepare: ({ title, media, isOrg }: { title?: string; media?: any; isOrg?: boolean }) => ({
       title: title || 'Unnamed author',
       subtitle: isOrg ? 'Organization account' : 'Individual',
       media,

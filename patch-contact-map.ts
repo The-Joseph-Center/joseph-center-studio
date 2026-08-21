@@ -24,7 +24,9 @@ const EMBED_URL =
   'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3097.3660224124865!2d-108.53858382348811!3d39.0753597361832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87471c3ce066e819%3A0xa115f38d383b22ba!2s2511%20Belford%20Ave%2C%20Grand%20Junction%2C%20CO%2081501!5e0!3m2!1sen!2sus!4v1781293306311!5m2!1sen!2sus'
 
 type Section = { _type: string; _key: string; embedUrl?: string; title?: string }
-type PageDoc = { _id: string; _rev: string; sections: Section[] }
+// `_type` is included because these scripts fetch whole documents (no GROQ
+// projection) and hand them straight to createOrReplace, which requires it.
+type PageDoc = { _id: string; _type: string; _rev: string; sections: Section[] }
 
 async function run() {
   console.log(`Patching page-contact on dataset: ${dataset}`)
