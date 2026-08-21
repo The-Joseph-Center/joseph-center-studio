@@ -30,6 +30,14 @@ export default defineType({
       rows: 3,
     }),
     defineField({
+      name: 'hidden',
+      title: 'Hide from website',
+      description:
+        'Temporarily removes this person from the public site — the board page — without deleting the document. Use when someone leaves; their photo, title and history stay intact so they can be restored with one click.',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
       name: 'isAdvisoryBoard',
       title: 'Advisory Board member',
       description: 'Check for advisory board members — displays "Advisory Board Member" label under the name.',
@@ -38,6 +46,12 @@ export default defineType({
     }),
   ],
   preview: {
-    select: { title: 'name', media: 'image' },
+    select: { title: 'name', media: 'image', hidden: 'hidden' },
+    prepare({ title, media, hidden }: { title?: string; media?: any; hidden?: boolean }) {
+      return {
+        title: hidden ? `${title ?? 'Untitled'} — hidden` : (title ?? 'Untitled'),
+        media,
+      };
+    },
   },
 });
