@@ -1,7 +1,7 @@
 import { defineType, defineField } from 'sanity';
 
 // One-time gift section on /donate. Behavior is controlled by the
-// VITE_DONATION_PROVIDER env var (harness | stripe) on the frontend, not by
+// the campaign overlay in siteSettings.donationConfig on the frontend, not by
 // the CMS — this schema only carries the banner heading.
 export default defineType({
   name: 'oneTimeGiftSection',

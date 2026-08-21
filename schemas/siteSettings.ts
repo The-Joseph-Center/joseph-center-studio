@@ -75,52 +75,29 @@ export default defineType({
     }),
     defineField({
       name: 'donationConfig',
-      title: 'Donation Platform Configuration',
+      title: 'Donation Configuration',
       description:
-        'Controls which giving platform is active sitewide. Switch activePlatform to flip all Give/Donate buttons at once — no developer involvement needed. See seed.ts for the operational checklist on cutover dates.',
+        'Giving runs through The Joseph Center\u2019s own checkout at /donate. The former platform switcher (Colorado Gives / Harness) was removed once that campaign ended and Harness was retired \u2014 use the Campaign Overlay below to feature an outside campaign alongside our own giving form.',
       type: 'object',
       fields: [
         defineField({
-          name: 'activePlatform',
-          title: 'Active Giving Platform',
-          type: 'string',
-          options: {
-            list: [
-              { title: 'Colorado Gives (external redirect)', value: 'colorado-gives' },
-              { title: 'Harness (in-site modal)', value: 'harness' },
-              { title: 'Stripe (internal checkout)', value: 'stripe' },
-            ],
-            layout: 'radio',
-          },
-          initialValue: 'colorado-gives',
-          validation: (Rule) => Rule.required(),
-          description: 'Colorado Gives → June 30 2026. Harness → July 1 – Dec 31 2026. Stripe → Jan 1 2027 onward.',
-        }),
-        defineField({
-          name: 'coloradoGivesUrl',
-          title: 'Colorado Gives Donate URL',
-          type: 'url',
-          initialValue: 'https://www.coloradogives.org/donate/The-Joseph-Center',
-        }),
-        defineField({
-          name: 'harnessUrl',
-          title: 'Harness Donate URL (fallback)',
-          description: 'Direct link used as a fallback if the Harness modal widget fails to load.',
-          type: 'url',
-          initialValue: 'https://josephcenter.harnessgiving.org/donate',
-        }),
-        defineField({
           name: 'campaignName',
           title: 'Current Campaign Name',
-          description: 'e.g. "Colorado Gives" — shown in announcement bar and button tooltips.',
+          description: 'Optional label shown in the announcement bar and button tooltips.',
           type: 'string',
-          initialValue: 'Colorado Gives',
+        }),
+        defineField({
+          name: 'donorPortalUrl',
+          title: 'Donor Portal URL',
+          description:
+            'Stripe Customer Portal login link — donors enter their email and Stripe emails them a secure sign-in link, where they can update their card, change their monthly amount, or cancel. Get it from Stripe Dashboard → Settings → Billing → Customer portal → "Login link". Leave blank to hide the Donor Portal link from the menu and footer.',
+          type: 'url',
         }),
         defineField({
           name: 'campaignOverlay',
           title: 'Campaign Overlay (optional)',
           description:
-            'When active and within the date window, shows a featured campaign option alongside Stripe on the donate page. Use for Colorado Gives Day, Giving Tuesday, matching campaigns, etc. Auto-hides on expiresAt. Only shown for one-time gifts; recurring always goes through Stripe.',
+            'When active and within the date window, shows a featured outside campaign alongside our own giving form on the donate page. Use for Colorado Gives Day, Giving Tuesday, matching campaigns, etc. Auto-hides on expiresAt. Only shown for one-time gifts; recurring always goes through our own checkout.',
           type: 'object',
           fields: [
             defineField({ name: 'enabled', title: 'Enabled', type: 'boolean', initialValue: false }),

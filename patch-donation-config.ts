@@ -20,11 +20,12 @@ if (dataset === 'production' && process.env.CONFIRM_PRODUCTION !== 'yes') {
   process.exit(1)
 }
 
+// The platform switcher (activePlatform / coloradoGivesUrl / harnessUrl) was
+// retired in August 2026 — see patch-remove-donation-platforms.ts. Giving runs
+// through our own Stripe checkout; donationConfig now carries only the campaign
+// overlay used to feature an outside campaign alongside it.
 const donationConfig = {
-  activePlatform: 'colorado-gives',
-  coloradoGivesUrl: 'https://www.coloradogives.org/donate/The-Joseph-Center',
-  harnessUrl: 'https://josephcenter.harnessgiving.org/donate',
-  campaignName: 'Colorado Gives',
+  campaignName: '',
   campaignOverlay: {
     enabled: false,
     campaignName: '',
@@ -40,7 +41,7 @@ async function run() {
   console.log(`Patching siteSettings.donationConfig on dataset: ${dataset}`)
   await client.patch('siteSettings').set({ donationConfig }).commit()
   await client.delete('drafts.siteSettings').catch(() => {})
-  console.log('Done. Initial platform = colorado-gives, announcement bar active until 2026-06-30.')
+  console.log('Done. Every Give button routes to /donate; campaign overlay disabled.')
 }
 
 run().catch((err) => {
