@@ -22,6 +22,15 @@ export default defineType({
       initialValue: 'staff',
     }),
     defineField({
+      name: 'groupByDepartment',
+      title: 'Group staff by department',
+      description:
+        'Splits the grid into department sections, each with its own heading and rule. Staff only — board members have no departments, so this has no effect on a board grid. Anyone with no department (or marked "Unknown / Needs Review") is listed under "Additional Staff" at the end.',
+      type: 'boolean',
+      initialValue: true,
+      hidden: ({ parent }: { parent?: { source?: string } }) => parent?.source === 'board',
+    }),
+    defineField({
       name: 'showContact',
       title: 'Show contact links',
       description: 'Uncheck to hide "Contact [name] →" links (typical for board pages).',
