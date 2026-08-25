@@ -603,9 +603,6 @@ export default defineType({
         { type: 'diagonalTextSection' },
         // Staff & Board pages (12) section
         { type: 'peopleGrid' },
-        // TEMPORARY — internal staff intake form; remove from /staff and delete
-        // the schema once the submissions have been entered into the CMS.
-        { type: 'staffIntakeSection' },
         // Testimonies page (13) section
         { type: 'videoGridSection' },
         // Events page (14) section

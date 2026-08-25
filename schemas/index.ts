@@ -18,8 +18,6 @@ import diagonalTextSection from './diagonalTextSection';
 import staff from './staff';
 import board from './board';
 import peopleGrid from './peopleGrid';
-// TEMPORARY — internal staff intake tool; remove once submissions are in.
-import staffIntakeSection from './staffIntakeSection'
 import videoGridSection from './videoGridSection';
 import eventsListSection from './eventsListSection';
 import transparencySection from './transparencySection';
@@ -60,7 +58,6 @@ export const schemaTypes = [
   staff,
   board,
   peopleGrid,
-  staffIntakeSection,
   videoGridSection,
   eventsListSection,
   transparencySection,
