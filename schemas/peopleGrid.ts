@@ -30,17 +30,6 @@ export default defineType({
       initialValue: true,
       hidden: ({ parent }: { parent?: { source?: string } }) => parent?.source === 'board',
     }),
-    // TEMPORARY — remove this field, and the matching handling in
-    // PeopleGrid.vue / PersonCard.vue, once the staff details are collected.
-    defineField({
-      name: 'intakeMode',
-      title: 'Intake mode (temporary)',
-      description:
-        'Turns every staff card into an editable form so a manager can correct it in place. Cards with no real department get name, title, department and email; the rest get title and department only. Nothing is written here — submissions are emailed for review. Untick to put the page back to normal; no deploy needed.',
-      type: 'boolean',
-      initialValue: false,
-      hidden: ({ parent }: { parent?: { source?: string } }) => parent?.source === 'board',
-    }),
     defineField({
       name: 'showContact',
       title: 'Show contact links',
