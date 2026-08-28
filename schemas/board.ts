@@ -30,6 +30,13 @@ export default defineType({
       rows: 3,
     }),
     defineField({
+      name: 'quoteSource',
+      title: 'Quote attribution',
+      description:
+        'Who said it, and where it is from — e.g. "Stephen Stills" or "Puddleglum, The Silver Chair". Leave blank for an unattributed quote. Put it here rather than inside the quote itself: the card adds the quotation marks and renders this on its own line, so a quote with the name typed on the end comes out looking like part of the sentence.',
+      type: 'string',
+    }),
+    defineField({
       name: 'hidden',
       title: 'Hide from website',
       description:
