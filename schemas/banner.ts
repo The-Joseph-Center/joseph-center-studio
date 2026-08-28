@@ -55,6 +55,22 @@ export default defineType({
       type: 'boolean',
       initialValue: true,
     }),
+    // Closure notices are the common case and they are always time-boxed.
+    // "Closed today because of snow" left up all week is worse than no banner,
+    // and relies on somebody remembering to come back and untick a box.
+    defineField({
+      name: 'startsAt',
+      title: 'Starts showing (optional)',
+      description: 'Leave blank to show as soon as it is switched on.',
+      type: 'datetime',
+    }),
+    defineField({
+      name: 'endsAt',
+      title: 'Stops showing (optional)',
+      description:
+        'Leave blank to show until it is switched off. Set this for anything temporary — a closure notice that outlives the closure does more harm than no notice at all.',
+      type: 'datetime',
+    }),
   ],
   preview: {
     select: { title: 'title', active: 'active' },
