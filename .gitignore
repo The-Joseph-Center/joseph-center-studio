@@ -7,3 +7,7 @@ dist/
 
 # Sanity Studio local dev cache
 .sanity/
+
+# This repo installs with pnpm. Two lockfiles leaves the package manager to
+# Netlify detection rather than to the repo, and the trees differ.
+package-lock.json
