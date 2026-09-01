@@ -1,0 +1,23 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# The Studio is a single-page app, and its two workspaces live under /production
+# and /staging. Without this, every deep link — /production/desk/staff, the URL
+# in a "review this document" message, a bookmarked structure pane — is a real
+# request for a path with no file behind it, and Netlify returns 404. Only the
+# bare domain would work.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# The Studio holds unpublished content and staff sessions. It should not be
+# indexed, framed, or sent as a referrer to third parties.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
