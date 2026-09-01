@@ -179,7 +179,7 @@ export default defineType({
       fields: [
         defineField({
           name: 'phone',
-          title: 'Phone number (display format, e.g. "(970) 243-7672")',
+          title: 'Phone number (display format, e.g. "(970) 245-7672")',
           type: 'string',
         }),
         defineField({
