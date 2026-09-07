@@ -20,6 +20,7 @@ import board from './board';
 import peopleGrid from './peopleGrid';
 import videoGridSection from './videoGridSection';
 import eventsListSection from './eventsListSection';
+import allocation from './allocation';
 import transparencySection from './transparencySection';
 import podcastEpisodesSection from './podcastEpisodesSection';
 import partnershipSection from './partnershipSection';
@@ -60,6 +61,7 @@ export const schemaTypes = [
   peopleGrid,
   videoGridSection,
   eventsListSection,
+  allocation,
   transparencySection,
   podcastEpisodesSection,
   partnershipSection,

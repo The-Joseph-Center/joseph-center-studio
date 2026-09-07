@@ -58,41 +58,39 @@ export default defineType({
         'Where the money goes, as general categories. Ordered largest to smallest automatically. Six at most — beyond that the slices get too thin to read, so roll the small ones into an "Other" category.',
       type: 'array',
       validation: (Rule) => Rule.max(6).warning('Six categories is the readable maximum for a pie chart. Roll the smaller ones into "Other".'),
-      of: [
-        {
-          type: 'object',
-          name: 'allocation',
-          fields: [
-            defineField({
-              name: 'label',
-              title: 'Category',
-              description: 'e.g. "Programs & Services", "Administration", "Fundraising"',
-              type: 'string',
-              validation: (Rule) => Rule.required(),
-            }),
-            defineField({
-              name: 'value',
-              title: 'Amount or percentage',
-              type: 'number',
-              validation: (Rule) => Rule.required().min(0),
-            }),
-            defineField({
-              name: 'note',
-              title: 'Short note (optional)',
-              description: 'One short line shown under the category in the key, e.g. "Food, shelter, case management".',
-              type: 'string',
-            }),
-          ],
-          preview: {
-            select: { title: 'label', subtitle: 'value' },
-            prepare: ({ title, subtitle }: { title?: string; subtitle?: number }) => ({
-              title: title || 'Untitled category',
-              subtitle: subtitle != null ? String(subtitle) : 'No value',
-            }),
-          },
-        },
-      ],
+      of: [{ type: 'allocation' }],
     }),
+    // ── Spending chart ──
+    // Sources answer "where does the money come from". This answers "where
+    // does it go", which is the question a donor is actually asking. Optional:
+    // the page renders whichever charts have categories.
+    defineField({
+      name: 'spendingHeading',
+      title: 'Second chart heading',
+      type: 'string',
+      initialValue: 'Where It Goes',
+    }),
+    defineField({
+      name: 'spendingPeriod',
+      title: 'Second chart period',
+      description: 'Leave blank to reuse the period above.',
+      type: 'string',
+    }),
+    defineField({
+      name: 'spending',
+      title: 'Spending categories',
+      description:
+        'Where the money was spent. Same six-category limit as above, and the same reason.',
+      type: 'array',
+      validation: (Rule) => Rule.max(6).warning('Six categories is the readable maximum for a pie chart.'),
+      of: [{ type: 'allocation' }],
+    }),
+    defineField({
+      name: 'spendingFootnote',
+      title: 'Second chart footnote (optional)',
+      type: 'string',
+    }),
+
     defineField({
       name: 'allocationFootnote',
       title: 'Chart footnote (optional)',
