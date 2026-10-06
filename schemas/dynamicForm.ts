@@ -128,8 +128,23 @@ export default defineType({
     defineField({
       name: 'notifyEmail',
       title: 'Notification email',
-      description: 'Staff member who receives an email notification each time the form is submitted. Leave blank to skip notifications.',
+      description: 'Staff member who hears about submissions. Leave blank for no notifications at all — the submissions are still stored and visible in the dashboard.',
       type: 'string',
+    }),
+    defineField({
+      name: 'notifyMode',
+      title: 'How often to notify',
+      description:
+        'Every submission suits a form that needs answering. A weekly summary suits a seasonal sign-up, where what matters is the list rather than each arrival — it is sent on Fridays while the form is open, and once more after it closes.',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Every submission', value: 'each' },
+          { title: 'Weekly summary, Fridays', value: 'weekly' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'each',
     }),
   ],
   preview: {
