@@ -29,7 +29,8 @@ export default defineType({
     }),
     defineField({
       name: 'date',
-      title: 'Date / time',
+      title: 'Date',
+      description: 'The day the event happens. The website shows the day only — if there is a start time, put it in the description where it can be explained.',
       type: 'datetime',
     }),
     defineField({
@@ -120,6 +121,20 @@ export default defineType({
     },
   ],
   preview: {
-    select: { title: 'title', subtitle: 'date', media: 'image' },
+    select: { title: 'title', date: 'date', featured: 'featured', media: 'image' },
+    // The raw field is an ISO timestamp — "2026-12-25T22:39:00.000Z" — which is
+    // unreadable in a list of events and carries a time nobody chose.
+    prepare: ({ title, date, featured, media }: { title?: string; date?: string; featured?: boolean; media?: unknown }) => {
+      const d = date ? new Date(date) : null;
+      const when = d && !Number.isNaN(d.getTime())
+        ? d.toLocaleDateString('en-US', { weekday: 'short', month: 'long', day: 'numeric', year: 'numeric' })
+        : 'No date set';
+      const past = d && !Number.isNaN(d.getTime()) && d.getTime() < Date.now();
+      return {
+        title: title || 'Event',
+        subtitle: [when, past ? 'past' : null, featured ? 'featured' : null].filter(Boolean).join(' · '),
+        media,
+      };
+    },
   },
 });
