@@ -43,7 +43,7 @@ async function run() {
     title: 'The Bravestone Project',
     url: 'https://bravestoneproject.org',
     description:
-      'Trauma-informed support for survivors of human trafficking and sexual trauma — survivor advocacy, care coordination and community education, at their own pace and without re-telling more than they want to.',
+      'Trauma-informed support for survivors of human trafficking and sexual trauma — survivor advocacy, care coordination and community education, at their own pace and without re-telling more than they want to. Denise keeps an office inside The Joseph Center; call to arrange a time.',
     category: 'community',
     phone: '(970) 892-9751',
     active: true,
@@ -69,7 +69,11 @@ async function run() {
         // the Coffee Chat. The website still carries the old one.
         title: 'Peace & Justice Center',
         description:
-          'Help replacing birth certificates, social security cards and other identification, lightweight food bags for people living outside or in a vehicle, the WE Shelter winter program, and a monthly community resource guide. Nobody is turned away; what they cannot do themselves they refer to Colorado Legal Services.',
+          'Help replacing birth certificates, social security cards and other identification, lightweight food bags for people living outside or in a vehicle, the WE Shelter winter program, and a monthly community resource guide. In their own space at The Joseph Center, 9am to 2pm Monday to Thursday, closed for half an hour at noon. Walk in or call first. Nobody is turned away; what they cannot do themselves they refer to Colorado Legal Services.',
+        // Their headline service for a guest standing at the desk is the one
+        // that unblocks everything else — a job, an apartment, a benefit all
+        // start with an ID.
+        category: 'documents',
         // Sherry gives this number out on air, and its exchange matches the
         // Joseph Center's. The 243-0136 on their website is the older one.
         phone: '(970) 985-4253',
