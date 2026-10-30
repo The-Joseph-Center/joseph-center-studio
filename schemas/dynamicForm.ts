@@ -46,6 +46,53 @@ export default defineType({
         defineField({ name: 'end', title: 'Closes at', type: 'datetime' }),
       ],
     }),
+    /**
+     * A ceiling on how many can be served, for the forms where there is one.
+     *
+     * Angel Tree is the reason: the Center can buy for about 150 children, and
+     * before this the form closed when somebody remembered to close it. The
+     * count is derived from the submissions rather than stored, so it cannot
+     * drift out of step with them.
+     */
+    defineField({
+      name: 'cap',
+      title: 'Limit on how many can be served (optional)',
+      description:
+        'Leave the limit blank for a form with no ceiling. When the limit is reached the form stops accepting sign-ups by itself.',
+      type: 'object',
+      options: { collapsible: true, collapsed: true },
+      fields: [
+        defineField({
+          name: 'limit',
+          title: 'Stop at',
+          description: 'e.g. 150 children. Blank means no limit.',
+          type: 'number',
+          validation: (Rule) => Rule.min(1).integer(),
+        }),
+        defineField({
+          name: 'countField',
+          title: 'Count this field',
+          description:
+            'The field name whose numbers are added up — e.g. "childrenCount". Leave blank to count sign-ups instead of people. One sign-up is a family, so these are very different numbers.',
+          type: 'string',
+        }),
+        defineField({
+          name: 'alreadyCounted',
+          title: 'Counted before the form tracked it',
+          description:
+            'Added to the total. For a form that ran before the counting field existed, this is your own figure for everyone already signed up — the earlier submissions carry no number to add up. Set it once and leave it.',
+          type: 'number',
+          validation: (Rule) => Rule.min(0).integer(),
+        }),
+        defineField({
+          name: 'fullMessage',
+          title: 'What to say when it is full',
+          description: 'Shown in place of the form. Leave blank for the default.',
+          type: 'text',
+          rows: 2,
+        }),
+      ],
+    }),
     defineField({
       name: 'description',
       title: 'Description',
