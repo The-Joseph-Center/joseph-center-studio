@@ -85,6 +85,13 @@ export default defineType({
           validation: (Rule) => Rule.min(0).integer(),
         }),
         defineField({
+          name: 'estimateField',
+          title: 'Use this answer as evidence',
+          description:
+            'Only to help decide the figure above: the sign-ups with no count are added up by this answer instead and reported in the dashboard. Never used to close the form — counting adults as children would shut the sign-up early and turn families away.',
+          type: 'string',
+        }),
+        defineField({
           name: 'fullMessage',
           title: 'What to say when it is full',
           description: 'Shown in place of the form. Leave blank for the default.',

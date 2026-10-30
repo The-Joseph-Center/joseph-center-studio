@@ -46,8 +46,16 @@ const CHILDREN_FIELD = {
 const CAP = {
   limit: 150,
   countField: 'childrenCount',
-  // Deliberately zero. See the note at the top of this file.
+  // Deliberately zero. See the note at the top of this file. While it is zero
+  // and there are sign-ups with no child count, the cap reports but does not
+  // close the form — acting on a total known to be short would shut the sign-up
+  // a hundred children late while showing a tidy figure.
   alreadyCounted: 0,
+  // Household size is not a number of children, but it is the only evidence in
+  // the stored sign-ups. The dashboard sums it over the ones with no count so
+  // the opening figure can be an estimate from something rather than nothing.
+  // It is never counted against the limit.
+  estimateField: 'householdSize',
   fullMessage:
     'We have reached the number of children we are able to serve this year. Thank you — please call us at (970) 245-4672 and we will do what we can.',
 }
