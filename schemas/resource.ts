@@ -45,6 +45,8 @@ export default defineType({
           { title: 'Substance Use & Recovery',   value: 'recovery' },
           { title: 'Transportation',             value: 'transportation' },
           { title: 'ID & Documents',             value: 'documents' },
+          { title: 'Older Adults & Seniors',     value: 'seniors' },
+          { title: 'Veterans & Military Families', value: 'veterans' },
           { title: 'Native American Resources',  value: 'native-american' },
           { title: 'Community Organizations',    value: 'community' },
           { title: 'Calendars & Events',         value: 'calendars' },
