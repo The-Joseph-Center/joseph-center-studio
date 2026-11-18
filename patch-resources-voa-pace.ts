@@ -102,10 +102,15 @@ const resources = [
     category: 'seniors',
     phone: '(970) 255-7223',
     address: '2754 Compass Drive, Grand Junction, CO 81506',
-    // Golden Girls houses women 50 and older in Grand Junction and already
-    // helps residents onto Medicaid and Medicare. For a resident who is 55+
-    // and in Mesa County this is the next door along.
-    programs: ['golden-girls'],
+    // Pinned to three programs, not just Golden Girls. PACE takes any adult
+    // 55 or older in Mesa County, men included, while Golden Girls houses
+    // women 50 and older — so a Golden-Girls-only pin would hide this from
+    // most of the people it can actually enrol. Day Shelter sees older
+    // guests who are already at nursing-facility level of need, and IFS is
+    // where the Medicaid and Medicare enrolment conversation happens anyway.
+    // It also appears on the Resources page under Older Adults & Seniors,
+    // which is where someone browsing without a program in mind will find it.
+    programs: ['golden-girls', 'day-shelter', 'integrated-financial-services'],
     active: true,
     featured: false,
   },
